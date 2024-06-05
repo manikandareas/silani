@@ -1,48 +1,51 @@
-import { SplashScreen, Stack } from "expo-router";
+import { Slot, SplashScreen, Stack, useRouter, useSegments } from "expo-router";
 
-import {
-   Poppins_100Thin,
-   Poppins_300Light,
-   Poppins_400Regular,
-   Poppins_500Medium,
-   Poppins_600SemiBold,
-   Poppins_700Bold,
-   Poppins_800ExtraBold,
-} from "@expo-google-fonts/poppins";
-import { useFonts } from "expo-font";
+import useLoadFonts from "@/common/hooks/useLoadFonts";
+import { tokenCache } from "@/common/libs/utils";
+import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
+import Constants from "expo-constants";
 import { useEffect } from "react";
+import { ReactQueryClientProvider } from "@/common/provider/ReactQuery";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
    // Register Application fonts
-   const [fontsLoaded, fontError] = useFonts({
-      Poppins_100Thin,
-      Poppins_300Light,
-      Poppins_400Regular,
-      Poppins_500Medium,
-      Poppins_600SemiBold,
-      Poppins_700Bold,
-      Poppins_800ExtraBold,
-   });
-
-   // Load fonts
-   useEffect(() => {
-      const loadFonts = async () => {
-         if (fontsLoaded) {
-            await SplashScreen.hideAsync();
-         }
-      };
-      loadFonts();
-   }, [fontsLoaded, fontError]);
-
-   // Handle error
-   if (!fontsLoaded || fontError) {
-      return null;
-   }
+   useLoadFonts();
+   const publishableKey = Constants.expoConfig?.extra
+      ?.clerkPublishableKey as string;
 
    return (
-      <Stack>
-         <Stack.Screen name="index" />
-      </Stack>
+      <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
+         <InitialLayout />
+      </ClerkProvider>
    );
 }
+
+const InitialLayout = () => {
+   const { isLoaded, isSignedIn } = useAuth();
+
+   const router = useRouter();
+   const segments = useSegments();
+
+   useEffect(() => {
+      if (!isLoaded) return;
+
+      const inTabsGroup = segments[0] === "(private)";
+      console.log({ segments });
+      console.log({ inTabsGroup, isSignedIn });
+
+      if (isSignedIn) {
+         router.replace("/home");
+      } else if (!isSignedIn && inTabsGroup) {
+         router.replace("/login");
+      }
+   }, [isSignedIn]);
+   return (
+      <ReactQueryClientProvider>
+         <GestureHandlerRootView style={{ flex: 1 }}>
+            <Slot />
+         </GestureHandlerRootView>
+      </ReactQueryClientProvider>
+   );
+};

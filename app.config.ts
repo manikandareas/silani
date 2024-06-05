@@ -49,4 +49,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
    experiments: {
       typedRoutes: true,
    },
+   extra: {
+      clerkPublishableKey: process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY,
+   },
 });
