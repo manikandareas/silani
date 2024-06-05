@@ -1,5 +1,7 @@
+import TextPoppins from "@/common/components/native/TextPoppins";
 import ViewContainer from "@/common/components/native/ViewContainer";
-import { Text, View } from "react-native";
+import { router } from "expo-router";
+import { Pressable, StyleSheet } from "react-native";
 
 export default function Index() {
    return (
@@ -10,9 +12,22 @@ export default function Index() {
             alignItems: "center",
          }}
       >
-         <Text className="font-PoppinsRegular">
-            Edit app/index.tsx to edit this screen.
-         </Text>
+         <Pressable
+            onPress={() => router.push("/(public)/login")}
+            className="rounded-md p-4 border"
+         >
+            <TextPoppins>Get Started</TextPoppins>
+         </Pressable>
       </ViewContainer>
    );
 }
+
+const styles = StyleSheet.create({
+   container: {
+      flex: 1,
+   },
+   page: {
+      justifyContent: "center",
+      alignItems: "center",
+   },
+});

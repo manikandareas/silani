@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import SecureStore from "expo-secure-store";
 
 export function cn(...inputs: ClassValue[]) {
    return twMerge(clsx(inputs));
@@ -43,4 +44,21 @@ export const setToMarketPriceFormattedDate = (date: Date): string => {
    const year: string = String(date.getFullYear());
 
    return `${day}-${month}-${year}`;
+};
+
+export const tokenCache = {
+   async getToken(key: string) {
+      try {
+         return await SecureStore.getItemAsync(key);
+      } catch (error) {
+         return null;
+      }
+   },
+   async saveToken(key: string, value: string) {
+      try {
+         return await SecureStore.setItemAsync(key, value);
+      } catch (error) {
+         return;
+      }
+   },
 };
