@@ -16,7 +16,7 @@ const windowScreen = Dimensions.get("window");
 export default function Index() {
    const scrollOffsetValue = useSharedValue<number>(0);
    const [data] = React.useState(ImageData);
-   const [isPagingEnabled, setIsPagingEnabled] = React.useState(true);
+   const [isPagingEnabled, setIsPagingEnabled] = React.useState(false);
    const [activeIndex, setActiveIndex] = React.useState<number>(0);
    const ref = React.useRef<ICarouselInstance>(null);
    const titleRef = React.useRef<Animatable.Text>(null);
@@ -47,6 +47,7 @@ export default function Index() {
             {...baseOptions}
             ref={ref}
             defaultScrollOffsetValue={scrollOffsetValue}
+            enabled={isPagingEnabled}
             style={{ width: "100%" }}
             autoPlay={true}
             autoPlayInterval={5000}
@@ -58,6 +59,8 @@ export default function Index() {
          <View className="flex-[0.33] w-full rounded-xl bg-white p-[40]">
             <Animatable.Text
                ref={titleRef}
+               animation={"slideInRight"}
+               duration={800}
                className="font-PoppinsSemiBold text-xl"
             >
                {TextData[activeIndex].title}
@@ -66,6 +69,7 @@ export default function Index() {
             <Animatable.Text
                ref={subtitleRef}
                animation={"slideInRight"}
+               duration={900}
                className="font-PoppinsLight text-xs text-[#898989] mt-4"
             >
                {TextData[activeIndex].subtitle}
