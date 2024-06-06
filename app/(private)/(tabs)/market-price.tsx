@@ -1,14 +1,13 @@
 import BottomSheetMarketPriceFilter from "@/common/components/BottomSheetMarketPriceFilter";
 import MarketPriceActions from "@/common/components/MarketPriceActions";
 import MarketPriceList from "@/common/components/MarketPriceList";
+import Spinner from "@/common/components/Spinner";
 import ViewContainer from "@/common/components/native/ViewContainer";
 import { BottomSheetCustomProvider } from "@/common/context/BottomSheetCustomContext";
 import { getMarketPrice } from "@/common/services/market-price";
 import { useMarketPriceParameterStore } from "@/common/store/market-price";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { ActivityIndicator } from "react-native";
-import Spinner from "react-native-loading-spinner-overlay";
 import { useShallow } from "zustand/react/shallow";
 
 const MarketPrice = () => {

@@ -1,3 +1,4 @@
+import Spinner from "@/common/components/Spinner";
 import ViewContainer from "@/common/components/native/ViewContainer";
 import DummyProfile from "@/common/constants/DummyProfile";
 import { cn } from "@/common/libs/utils";
@@ -6,7 +7,6 @@ import { Entypo, Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import { Alert, Image, Pressable, Text, View } from "react-native";
-import Spinner from "react-native-loading-spinner-overlay";
 
 const Profile = () => {
    const { user } = useUser();
@@ -26,7 +26,7 @@ const Profile = () => {
          {
             text: "Sign Out",
             onPress: async () => {
-               await signOut({ redirectUrl: "/login" });
+               await signOut({ redirectUrl: "/(public)/login" });
             },
             style: "destructive",
          },
