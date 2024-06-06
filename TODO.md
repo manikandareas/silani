@@ -8,7 +8,7 @@ View the raw content of this file to understand the format.
 
 ### Todo
 
-- [ ] Pager View  
+- [X] Pager View  
 - [ ] Finish authentication  
   - [X] Register
   - [X] Login
