@@ -7,7 +7,7 @@ import { Controller, useForm } from "react-hook-form";
 import { Link, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSignIn } from "@clerk/clerk-expo";
-import Spinner from "react-native-loading-spinner-overlay";
+import Spinner from "@/common/components/Spinner";
 
 const imgSrc = require("@/assets/images/auth-image.jpg");
 
@@ -51,7 +51,7 @@ const LoginScreen = () => {
 
    return (
       <View className="flex-1">
-         <Spinner visible={isLoading} color="#D1F249" />
+         <Spinner visible={isLoading} />
          <Image source={imgSrc} className="w-full flex-[0.4]" />
          <View className="flex-[0.6] -mt-20 bg-white rounded-t-3xl py-[25] px-[20]">
             <Text className="font-PoppinsSemiBold text-2xl">Log in</Text>

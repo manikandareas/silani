@@ -12,10 +12,10 @@ import {
    TextInput,
    View,
 } from "react-native";
-import Spinner from "react-native-loading-spinner-overlay";
 import { z } from "zod";
 import * as WebBrowser from "expo-web-browser";
 import { useWarmUpBrowser } from "@/common/hooks/useWarmUpBrowser";
+import Spinner from "@/common/components/Spinner";
 
 const imgSrc = require("@/assets/images/auth-image.jpg");
 
@@ -44,7 +44,7 @@ const RegisterScreen = () => {
 
    const onRegisterPress = async (data: z.infer<typeof signInFormSchema>) => {
       if (!isLoaded) {
-         return;
+         return null;
       }
       setIsLoading(true);
 
@@ -73,13 +73,16 @@ const RegisterScreen = () => {
       }
    };
 
-   const onOauthGooglePress = React.useCallback(async () => {
+   const onOauthGooglePress = async () => {
       try {
-         const { createdSessionId, signUp, setActive } = await startOAuthFlow();
-
+         const { createdSessionId, signUp, setActive, authSessionResult } =
+            await startOAuthFlow();
+         console.log("authSessionResult", { authSessionResult });
          if (createdSessionId) {
+            console.log("~~ Oauth on set active ~~");
             setActive!({ session: createdSessionId });
          } else {
+            console.log("~~ Oauth on else segment ~~");
             // Use signIn or signUp for next steps such as MFA
             // const response = await signUp?.update({
             //    username: signUp!.emailAddress!.split("@")[0],
@@ -88,9 +91,9 @@ const RegisterScreen = () => {
             // console.log("Sign Up Success", JSON.stringify(response, null, 2));
          }
       } catch (err: any) {
-         console.error("OAuth error", err);
+         console.error("Error:", JSON.stringify(err, null, 2));
       }
-   }, []);
+   };
 
    return (
       <View className="flex-1">

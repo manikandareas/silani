@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
    tabText: {
       paddingLeft: 8,
       color: "white",
+      fontFamily: "Poppins_500Medium",
    },
 });
 

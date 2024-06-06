@@ -1,14 +1,10 @@
 import { PROVINCE } from "@/common/constants/MarketPriceFilter";
-import { cn } from "@/common/libs/utils";
+import { cn, rupiahFormat } from "@/common/libs/utils";
 import { BPNMarketPricePerProvince } from "@/common/types/bpn";
 import { Ionicons } from "@expo/vector-icons";
 import { useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { FlatList, Image, RefreshControl, Text, View } from "react-native";
-import {
-   formatCurrency,
-   getSupportedCurrencies,
-} from "react-native-format-currency";
 
 type MarketPriceListProps = {
    data: BPNMarketPricePerProvince;
@@ -59,10 +55,8 @@ type MarketPriceItemProps = BPNMarketPricePerProvince["data"][number] & {
 };
 
 export const MarketPriceItem = (props: MarketPriceItemProps) => {
-   const [idr] =
-      props.geomean === "-"
-         ? "-"
-         : formatCurrency({ amount: props.geomean as number, code: "IDR" });
+   const idr =
+      props.geomean === "-" ? "-" : rupiahFormat(props.geomean as number);
 
    const disparity =
       typeof props.disparitas_percent === "number"
