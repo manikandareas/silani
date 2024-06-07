@@ -10,7 +10,6 @@ import { useUser } from "@clerk/clerk-expo";
 const GetStartedScreen = () => {
    const { user } = useUser();
 
-   const grey = "#9B9B9B";
    return (
       <ViewContainer className="-[]">
          <SafeAreaView>
@@ -42,7 +41,12 @@ const GetStartedScreen = () => {
                </Link>
 
                <View className="gap-y-2">
-                  <Pressable className="py-3 rounded-xl bg-primary justify-center items-center">
+                  <Pressable
+                     onPress={() =>
+                        router.push("/(private)/(stack)/fields/add")
+                     }
+                     className="py-3 rounded-xl bg-primary justify-center items-center"
+                  >
                      <Text className="font-PoppinsRegular text-black">
                         Tambahkan Ladang
                      </Text>

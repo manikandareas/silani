@@ -4,8 +4,8 @@ import React from "react";
 const SectionTitle = (props: { title: string }) => {
    return (
       <Text
-         style={{ fontSize: 18 }}
-         className="font-RedHatBold mb-[12] mt-[14]"
+         style={{ fontSize: 16 }}
+         className="font-PoppinsMedium mb-[12] mt-[14]"
       >
          {props.title}
       </Text>

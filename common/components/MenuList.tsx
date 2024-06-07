@@ -10,7 +10,7 @@ import {
 
 const Menu: { name: string; title: string; icon: ImageSourcePropType }[] = [
    {
-      name: "/(stack)/field",
+      name: "/(stack)/fields",
       title: "Ladang Ku",
       icon: require("@/assets/images/ladang-ku.png"),
    },

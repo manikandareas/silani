@@ -11,11 +11,12 @@ const Layout = () => {
             }}
          />
          <Stack.Screen
-            name="field"
+            name="fields"
             options={{
-               title: "Ladang Ku",
+               headerShown: false,
             }}
          />
+
          <Stack.Screen
             name="forecast"
             options={{
@@ -41,7 +42,7 @@ const Layout = () => {
                title: "Cuaca dalam 7 hari",
             }}
          />
-         <Stack.Screen name="news" options={{ headerShown: false }} />
+         <Stack.Screen name="news" options={{ title: "Berita" }} />
       </Stack>
    );
 };
