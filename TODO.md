@@ -13,10 +13,9 @@ View the raw content of this file to understand the format.
   - [X] Register
   - [X] Login
   - [ ] Login with google
-  - [ ] Logout
+  - [X] Logout
   - [X] Store user data to storage
-- [ ] Create detail news screen
-- [ ] Create getting started screen
+- [X] Create getting started screen
   - [ ] Adding first field
   - [ ] Adding first plant
 <!-- 
