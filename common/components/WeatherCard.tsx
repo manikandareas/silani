@@ -11,13 +11,13 @@ const WeatherCard = () => {
       >
          <View className="flex-row justify-between items-center">
             <View className="gap-y-1.5">
-               <Text className="text-xs font-RedHatRegular">
+               <Text className="text-xs font-PoppinsRegular">
                   {generateHumanDate()}
                </Text>
-               <Text style={{ fontSize: 24 }} className="font-RedHatBold">
+               <Text style={{ fontSize: 24 }} className="font-PoppinsBold">
                   28°C
                </Text>
-               <Text className="font-RedHatMedium font-bold">
+               <Text className="font-PoppinsMedium font-bold">
                   Kelembapan 82%
                </Text>
             </View>

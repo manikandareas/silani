@@ -18,6 +18,7 @@ const RootScreen = () => {
             <WeatherCard />
             {/* <BannerCompletesProfile /> */}
             <SectionTitle title="Menu" />
+            {/* <Link href={"(private)/get-started"}>Get Started</Link> */}
             <MenuList />
             <View className="flex-row justify-between items-center">
                <SectionTitle title="Berita" />

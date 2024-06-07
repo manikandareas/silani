@@ -8,6 +8,7 @@ import {
    BottomSheetModalProvider,
    BottomSheetView,
 } from "@gorhom/bottom-sheet";
+import { router } from "expo-router";
 import React, { useCallback, useMemo, useRef } from "react";
 import {
    StyleSheet,
@@ -42,19 +43,27 @@ const LadangKu = () => {
 
    return (
       <BottomSheetModalProvider>
-         <ViewContainer>
+         <ViewContainer className="py-4">
             <View className="flex-row items-center justify-between">
                <TouchableOpacity
-                  onPress={handlePresentModalPress}
-                  className="bg-green-500 px-4 py-2 overflow-clip rounded-lg  items-center  flex-row"
+                  onPress={() => router.push("/(private)/(stack)/fields/add")}
+                  className="bg-white border border-green-500 px-4 py-2 overflow-clip rounded-lg items-center flex-row"
                >
-                  <Text className="font-RedHatBold mr-1.5 text-white">
+                  <Text className="font-RedHatBold mr-1.5 text-green-500">
                      Tambah
                   </Text>
-                  <Ionicons name="create-outline" color={"white"} size={20} />
+                  <Ionicons
+                     name="create-outline"
+                     color={" rgb(34 197 94)"}
+                     className="text-green-500"
+                     size={20}
+                  />
                </TouchableOpacity>
                <TouchableOpacity>
-                  <MaterialCommunityIcons name="filter-menu" size={24} />
+                  <MaterialCommunityIcons
+                     name="filter-menu-outline"
+                     size={24}
+                  />
                </TouchableOpacity>
             </View>
 

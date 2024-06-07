@@ -9,6 +9,11 @@ const GetStartedLayout = () => {
             name="index"
             options={{ headerShown: false, presentation: "modal" }}
          />
+         <Stack.Screen
+            name="first-field"
+            options={{ title: "Ladang Ku", presentation: "modal" }}
+         />
+         <Stack.Screen name="plants" options={{ presentation: "modal" }} />
       </Stack>
    );
 };

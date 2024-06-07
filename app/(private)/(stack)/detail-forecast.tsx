@@ -34,16 +34,16 @@ const DetailForecast = () => {
                   <View className="flex-1 gap-y-1">
                      <Text
                         style={{ fontSize: 18 }}
-                        className="font-RedHatBold mt-4"
+                        className="font-PoppinsBold mt-4"
                      >
                         Tomorrow
                      </Text>
                      <Text
                         style={{ fontSize: 16 }}
-                        className="font-RedHatBold mt-1 text-[#898989]"
+                        className="font-PoppinsBold mt-1 text-[#898989]"
                      >
                         <Text
-                           className="text-black font-RedHatBold"
+                           className="text-black font-PoppinsBold"
                            style={{ fontSize: 26 }}
                         >
                            19
@@ -96,7 +96,10 @@ const DetailForecast = () => {
                      key={index}
                      className="items-center justify-between flex-row py-3 border-b border-[#e8e8e8]"
                   >
-                     <Text style={{ fontSize: 16 }} className="font-RedHatBold">
+                     <Text
+                        style={{ fontSize: 16 }}
+                        className="font-PoppinsBold"
+                     >
                         Sat
                      </Text>
                      <View className="flex-row items-center gap-x-1">
