@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const NewsList = () => {
    return (
-      <View className="">
+      <View className="flex-1  px-[5]">
          {DummyNews.map((item) => (
             <NewsItem key={item.id} {...item} />
          ))}
@@ -32,8 +32,8 @@ export const NewsItem = (props: NewsItemProps) => {
             colors={["rgba(0,0,0,0.8)", "transparent"]}
             className="h-full left-0 right-0 bottom-0 absolute rotate-180"
          />
-         <Text className="text-white font-RedHatBold ">{props.title}</Text>
-         <Text className="text-white font-RedHatRegular">
+         <Text className="text-white font-PoppinsBold ">{props.title}</Text>
+         <Text className="text-white text-xs font-PoppinsLight">
             {props.description}
          </Text>
       </ImageBackground>

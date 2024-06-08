@@ -45,11 +45,18 @@ const News = () => {
 
 export default News;
 
-const NewsItem = () => {
+type NewsItemProps = {
+   id?: number;
+   title?: string;
+   image?: string;
+   description?: string;
+};
+
+export const NewsItem = (props: NewsItemProps) => {
    return (
-      <View className="flex-row rounded-sm border-b gap-x-2 py-1.5 border-[#E5E5E5]">
+      <View className="flex-row rounded-sm border-b gap-x-2 py-1.5 border-[#E5E5E5] overflow-hidden">
          {/* Left */}
-         <View className="max-w-[70%] gap-y-1">
+         <View className="max-w-[70%] w-full gap-y-1">
             <View className="flex-row items-center">
                <Image
                   src={DummyProfile.avatarUrl}
@@ -59,8 +66,9 @@ const NewsItem = () => {
                   Vito Manik . 3 Jam yang Lalu
                </Text>
             </View>
-            <Text style={{ fontSize: 16 }} className="font-RedHatMedium">
-               FTX stops sale of $10,000 in US futures, closes 10% of shares
+            <Text style={{ fontSize: 14 }} className="font-PoppinsRegular">
+               {props.title ??
+                  "FTX stops sale of $10,000 in US futures, closes 10% of shares"}
             </Text>
 
             <Ionicons name="bookmark-outline" size={18} color="#898989" />
@@ -69,7 +77,7 @@ const NewsItem = () => {
          {/* Right */}
          <View className="w-[30%]">
             <Image
-               src={dummyNewsImage}
+               src={props.image ?? dummyNewsImage}
                className="aspect-square object-cover rounded-md"
             />
          </View>
