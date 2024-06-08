@@ -17,14 +17,14 @@ const Profile = () => {
    const handlerSignOut = () => {
       setIsLoading(true);
 
-      Alert.alert("Sign Out", "Are you sure you want to sign out?", [
+      Alert.alert("Sign Out", "Anda yakin ingin keluar?", [
          {
-            text: "Cancel",
+            text: "Batal",
             onPress: () => console.log("cancel"),
             style: "cancel",
          },
          {
-            text: "Sign Out",
+            text: "Keluar",
             onPress: async () => {
                await signOut({ redirectUrl: "/(public)/login" });
             },
@@ -36,17 +36,25 @@ const Profile = () => {
    return (
       <ViewContainer>
          <Spinner visible={isLoading} />
-         <View className="flex-row ">
+         <View className=" justify-center items-center gap-y-4">
             <Image
                src={user?.imageUrl}
-               className="aspect-square w-[50] rounded-full"
+               className="aspect-square w-[80] rounded-full"
             />
             <View className="ml-3">
-               <Text className="mb-1">{user?.fullName}</Text>
-               <Text className="text-[#898989] font-RedHatRegular text-xs">
+               <Text className="font-PoppinsMedium text-center">
+                  {user?.fullName}
+               </Text>
+               <Text className="text-[#898989] text-center font-PoppinsRegular text-xs">
                   {DummyProfile.address}
                </Text>
             </View>
+            <Pressable
+               onPress={() => router.push("/profile/detail")}
+               className="py-2 px-3 rounded-md bg-[#E5E5E5]"
+            >
+               <Text className="font-PoppinsRegular">Edit Profile</Text>
+            </Pressable>
          </View>
          <View className="">
             <Text className="font-RedHatMedium mb-4 mt-4">Pengaturan</Text>
@@ -60,14 +68,23 @@ const Profile = () => {
             ))}
             <Pressable
                onPress={handlerSignOut}
-               className="flex-row items-center justify-center bg-red-500 py-2 rounded-xl"
+               className="flex-row mb-4 items-center justify-between"
             >
-               <Ionicons
-                  name="log-out-outline"
-                  size={ICON_SIZE}
-                  color="white"
-               />
-               <Text className="ml-3 text-white">Keluar</Text>
+               <View className="flex-row items-center">
+                  <Ionicons
+                     name="log-out-outline"
+                     size={ICON_SIZE}
+                     color={"rgb(239 68 68)"}
+                  />
+                  <Text
+                     // style={{ fontSize: 14 }}
+                     className={cn("ml-3  font-PoppinsRegular ")}
+                  >
+                     <Text className="ml-3 font-PoppinsRegular text-red-500">
+                        Keluar
+                     </Text>
+                  </Text>
+               </View>
             </Pressable>
          </View>
       </ViewContainer>
@@ -84,14 +101,14 @@ type SettingsItemProps = {
 const SettingsItem = (props: SettingsItemProps) => {
    return (
       <Pressable
-         onPress={() => router.push("/profile/detail")}
+         // onPress={() => router.push("/profile/detail")}
          className="flex-row mb-4 items-center justify-between"
       >
          <View className="flex-row items-center">
             {props.icon}
             <Text
                // style={{ fontSize: 14 }}
-               className={cn("ml-3  font-RedHatRegular ", {
+               className={cn("ml-3  font-PoppinsRegular ", {
                   "text-red-500": props.title === "Keluar",
                })}
             >
@@ -108,14 +125,13 @@ const ICON_SIZE = 21;
 
 const SettingsItems = [
    {
-      title: "Infromasi Pribadi",
-      icon: <Ionicons name="person-circle-outline" size={ICON_SIZE} />,
-      onPress: () => {},
-   },
-
-   {
       title: "Preferensi Tampilan",
       icon: <Entypo name="sound-mix" size={ICON_SIZE} />,
+      onPress: () => {},
+   },
+   {
+      title: "Ganti Password",
+      icon: <Ionicons name="lock-closed-outline" size={ICON_SIZE} />,
       onPress: () => {},
    },
    {

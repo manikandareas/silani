@@ -8,13 +8,16 @@ const ProfileLayout = () => {
          <Stack.Screen
             name="index"
             options={{
-               headerShown: false,
+               title: "Profile",
+               headerShadowVisible: false,
             }}
          />
          <Stack.Screen
             name="detail"
             options={{
-               headerShown: false,
+               headerShown: true,
+               headerTitle: "Informasi Pribadi",
+               headerShadowVisible: false,
             }}
          />
       </Stack>

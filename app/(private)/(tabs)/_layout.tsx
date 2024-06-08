@@ -101,7 +101,7 @@ const Layout = () => {
          <Tabs.Screen
             name="profile"
             options={{
-               headerTitle: "Profile",
+               headerShown: false,
             }}
          />
       </Tabs>
