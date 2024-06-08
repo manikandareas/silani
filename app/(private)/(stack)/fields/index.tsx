@@ -18,7 +18,7 @@ import {
    TouchableOpacity,
 } from "react-native";
 
-const LadangKu = () => {
+const MyField = () => {
    // ref
    const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
@@ -68,79 +68,9 @@ const LadangKu = () => {
             </View>
 
             <FieldList />
-
-            <BottomSheetModal
-               ref={bottomSheetModalRef}
-               index={1}
-               snapPoints={snapPoints}
-               onChange={handleSheetChanges}
-               backdropComponent={renderBackdrop}
-            >
-               <BottomSheetView style={styles.bottomSheet}>
-                  <Text className="font-RedHatBold text-lg text-center mb-4">
-                     Tambahkan Ladang
-                  </Text>
-                  <View className="">
-                     <View className="mb-4">
-                        <Text className="font-RedHatBold text-[#898989] mb-1.5">
-                           Nama Ladang
-                        </Text>
-                        <TextInput
-                           style={{ fontSize: 16 }}
-                           className="px-3 py-2 border rounded-lg border-[#E5E5E5]"
-                           placeholder="Ladangku"
-                        />
-                     </View>
-                     <View className="mb-4">
-                        <Text className="font-RedHatBold text-[#898989] mb-1.5">
-                           Luas Ladang
-                        </Text>
-
-                        <TextInput
-                           style={{ fontSize: 16 }}
-                           className="px-3 py-2 border rounded-lg border-[#E5E5E5]"
-                           placeholder="1000"
-                        />
-                        <Text className="text-xs text-[#898989]">
-                           <Text className="text-red-500">*</Text>Dalam satuan
-                           meter
-                        </Text>
-                     </View>
-                     <View className="mb-4">
-                        <Text className="font-RedHatBold text-[#898989] mb-1.5">
-                           Lokasi
-                        </Text>
-
-                        <View className="flex-row  items-center gap-x-1">
-                           <Ionicons
-                              color={"green"}
-                              name="location-outline"
-                              size={24}
-                           />
-                           <Text style={{ fontSize: 16 }}>Pilih Lokasi</Text>
-                        </View>
-                     </View>
-                     <TouchableOpacity className="py-3 px-3.5 rounded-xl bg-green-400">
-                        <Text
-                           style={{ fontSize: 16 }}
-                           className="font-RedHatBold text-white text-center"
-                        >
-                           Buat
-                        </Text>
-                     </TouchableOpacity>
-                  </View>
-               </BottomSheetView>
-            </BottomSheetModal>
          </ViewContainer>
       </BottomSheetModalProvider>
    );
 };
 
-export default LadangKu;
-
-const styles = StyleSheet.create({
-   bottomSheet: {
-      flex: 1,
-      paddingHorizontal: 20,
-   },
-});
+export default MyField;

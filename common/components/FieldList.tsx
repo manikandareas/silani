@@ -1,6 +1,7 @@
-import { View, Text, Image, FlatList } from "react-native";
+import { View, Text, Image, FlatList, Button } from "react-native";
 import React from "react";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 const FieldList = () => {
    return (
@@ -41,6 +42,12 @@ export const FieldItem = (props: FieldItemProps) => {
                   {props.address}
                </Text>
             </View>
+            <Button
+               title="Lihat"
+               onPress={() =>
+                  router.push(`/(private)/(stack)/fields/${props.name}`)
+               }
+            />
 
             <View className="">
                <View className="flex-row items-center">

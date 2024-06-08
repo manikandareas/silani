@@ -23,7 +23,7 @@ export default function RootLayout() {
 }
 
 const InitialLayout = () => {
-   const { isLoaded, isSignedIn } = useAuth();
+   const { isLoaded, isSignedIn, getToken } = useAuth();
 
    const router = useRouter();
    const segments = useSegments();
@@ -31,6 +31,14 @@ const InitialLayout = () => {
 
    useEffect(() => {
       if (!isLoaded) return;
+
+      //
+      const get = async () => {
+         const token = await getToken();
+         console.log({ token });
+      };
+      get();
+      //
 
       const inTabsGroup = segments[0] === "(private)";
 
