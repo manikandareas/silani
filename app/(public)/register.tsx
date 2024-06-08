@@ -16,6 +16,7 @@ import { z } from "zod";
 import * as WebBrowser from "expo-web-browser";
 import { useWarmUpBrowser } from "@/common/hooks/useWarmUpBrowser";
 import Spinner from "@/common/components/Spinner";
+import * as Animatable from "react-native-animatable";
 
 const imgSrc = require("@/assets/images/auth-image.jpg");
 
@@ -99,10 +100,13 @@ const RegisterScreen = () => {
       <View className="flex-1">
          <Spinner visible={isLoading} />
          <Image source={imgSrc} className="w-full flex-[0.2]" />
-         <View className="flex-[0.8] -mt-20 bg-white rounded-t-3xl py-[25] px-[20]">
-            <Text className="font-PoppinsSemiBold text-2xl">Register</Text>
+         <Animatable.View
+            animation={"slideInUp"}
+            className="flex-[0.8] -mt-20 bg-white rounded-t-3xl py-[25] px-[20]"
+         >
+            <Text className="font-PoppinsSemiBold text-2xl">Daftar</Text>
             <Text className="font-PoppinsLight mt-2 text-xs">
-               It's free and always will be
+               Daftar Sekarang dan Mulai Kelola Pertanian Anda dengan Mudah.
             </Text>
 
             <View className="mt-6">
@@ -114,7 +118,7 @@ const RegisterScreen = () => {
                      fieldState: { error },
                   }) => (
                      <View className="gap-y-1.5 mb-3">
-                        <Text className=" font-RedHatRegular">Name</Text>
+                        <Text className=" font-RedHatRegular">Nama</Text>
                         <TextInput
                            className="min-w-[320] h-[51] bg-white rounded-md border border-[#D9D9D9] px-3"
                            placeholder="John Doe"
@@ -164,7 +168,7 @@ const RegisterScreen = () => {
                      fieldState: { error },
                   }) => (
                      <View className="gap-y-1.5 mb-6">
-                        <Text className=" font-RedHatRegular">Password</Text>
+                        <Text className=" font-RedHatRegular">Kata Sandi</Text>
                         <TextInput
                            secureTextEntry
                            className="min-w-[320] h-[51] bg-white rounded-md border border-[#D9D9D9] px-3"
@@ -182,10 +186,10 @@ const RegisterScreen = () => {
 
                         <View>
                            <Text className="text-xs text-[#6d6d6d]">
-                              - Password must be at least 8 characters
+                              - Kata sandi harus setidaknya 8 karakter
                            </Text>
                            <Text className="text-xs text-[#6d6d6d]">
-                              - Can't contain spaces
+                              - Tidak bisa mengandung spasi
                            </Text>
                         </View>
                      </View>
@@ -208,7 +212,7 @@ const RegisterScreen = () => {
                   </Link>
                </Text>
                <Text className=" text-[#6d6d6d] text-xs font-PoppinsRegular">
-                  Sign up with socials
+                  Daftar dengan media sosial
                </Text>
 
                <View className="flex-row justify-between mt-4 gap-x-2">
@@ -223,7 +227,7 @@ const RegisterScreen = () => {
                   </Pressable>
                </View>
             </View>
-         </View>
+         </Animatable.View>
       </View>
    );
 };
